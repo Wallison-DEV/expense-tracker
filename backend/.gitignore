@@ -1,0 +1,69 @@
+# Arquivos de compilação gerados
+bin/
+obj/
+
+# Arquivos temporários
+.vs/
+*.user
+*.suo
+*.cache
+*.log
+
+# Dependências e pacotes
+packages/
+node_modules/
+
+# Arquivos de configuração do Visual Studio
+*.vscode/
+*.sln.cache
+*.suo
+*.user
+*.userprefs
+*.vspscc
+*_i.c
+*_p.c
+*.ilk
+*.log
+*.pdb
+*.pidb
+*.svclog
+*.scc
+
+# Arquivos de build
+[Bb]in/
+[Oo]bj/
+
+# Arquivos de publicação
+publish/
+
+# Arquivos de compilação do Visual Studio
+*.appx
+*.appxbundle
+*.appxupload
+*.exe
+*.lib
+*.dll
+*.dll.config
+*.pdb
+*.ilk
+*.aps
+*.clw
+*.ilk
+*.ncb
+*.opensdf
+*.sdf
+*.suo
+*.exp
+*.log
+*.manifest
+*.res
+*.sbr
+*.scc
+*.tlb
+*.tlh
+*.ilk
+*.mdf
+*.ldf
+
+# Visual Studio Code
+.vscode/

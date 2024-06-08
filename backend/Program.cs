@@ -1,9 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using TransactionApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<TransactionContext>(opt =>
+    opt.UseInMemoryDatabase("Transaction"));
 
 var app = builder.Build();
 

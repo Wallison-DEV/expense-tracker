@@ -24,8 +24,6 @@ namespace TransactionApi
             services.AddDbContext<TransactionContext>(opt =>
                 opt.UseInMemoryDatabase("Transaction"));
 
-            services.AddSwaggerGen();
-
             services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddCors(options =>
             {
@@ -51,7 +49,7 @@ namespace TransactionApi
 
             app.UseAuthorization();
 
-            app.UseCors("CorsPolicy"); ;
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {

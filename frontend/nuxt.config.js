@@ -50,10 +50,8 @@ export default {
   //   baseURL: '/',
   // },
   axios: {
-    baseURL: 'http://localhost:5142/api', 
+    baseURL: 'http://localhost:5142', 
     headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': 'true',
         'Content-Type': 'application/json' 
     }
   },
@@ -61,7 +59,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en',
+      lang: 'pt-BR',
     },
   },
 

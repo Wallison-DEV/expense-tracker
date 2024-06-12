@@ -17,17 +17,8 @@ export default {
   methods: {
     async fetchTransactions() {
       try {
-        const response = await fetch('http://localhost:5142/api/Transactions', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        if (!response.ok) {
-          throw new Error('Failed to fetch transactions');
-        }
-        const data = await response.json();
-        this.transactions = data;
+        const response = await this.$axios.get('/api/Transactions');
+        this.transactions = response.data;
         this.updateBalance();
       } catch (error) {
         console.error('Error fetching transactions:', error);
@@ -35,22 +26,16 @@ export default {
     },
     async addTransaction(transaction) {
       try {
-        const response = await fetch('http://localhost:5142/api/Transactions', {
-          method: 'POST',
+        const response = await this.$axios.post('/api/Transactions', {
+          amount: transaction.amount,
+          description: transaction.description,
+          type: transaction.type
+        }, {
           headers: {
             'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            "amount": transaction.amount,
-            "description": transaction.description,
-            "type": transaction.type
-          })
+          }
         });
-        if (!response.ok) {
-          throw new Error('Failed to add transaction');
-        }
-        const newTransaction = await response.json();
-        this.transactions.push(newTransaction);
+        this.transactions.push(response.data);
         this.updateBalance();
       } catch (error) {
         console.error('Error adding transaction:', error);

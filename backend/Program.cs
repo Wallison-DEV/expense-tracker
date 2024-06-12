@@ -4,6 +4,12 @@ using TransactionApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+    {
+        options.AddDefaultPolicy(policy => policy.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+    }
+);
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -23,6 +29,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

@@ -10,7 +10,7 @@
     </v-app-bar>
 
     <v-main>
-      <v-container class="p-8">
+      <v-container class="p-8 mt-8">
         <Nuxt />
       </v-container>
     </v-main>

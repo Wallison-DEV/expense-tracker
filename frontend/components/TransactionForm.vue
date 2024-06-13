@@ -9,7 +9,9 @@
                         <v-radio :value="0" label="Entrada"></v-radio>
                         <v-radio :value="1" label="Saída"></v-radio>
                     </v-radio-group>
-                    <v-btn color="#673ab7" style="color: #fff;" rounded="xl" type="submit">Adicionar</v-btn>
+                    <v-btn :loading="loading" style="color: #fff" color="#673ab7" class="text-white" rounded type="submit">
+                        {{ editMode ? 'Atualizar' : 'Adicionar' }}
+                    </v-btn>
                 </div>
             </v-form>
         </v-col>
@@ -18,23 +20,41 @@
 
 <script>
 export default {
+    props: {
+        editTransaction: {
+            type: Object,
+            default: null
+        }
+    },
     data() {
         return {
             description: '',
             amount: null,
-            type: 0
+            type: 0,
+            editMode: false,
+            loading: false
         }
     },
     methods: {
         submit() {
             this.$emit('submit', {
                 description: this.description,
-                amount: parseFloat(this.amount),
+                amount: parseFloat(this.amount) || 0,
                 type: this.type
             });
+            this.resetForm();
+        },
+        setEditTransaction(transaction) {
+            this.description = transaction.description;
+            this.amount = transaction.amount;
+            this.type = transaction.type;
+            this.editMode = true;
+        },
+        resetForm() {
             this.description = '';
             this.amount = null;
             this.type = 0;
+            this.editMode = false;
         }
     }
 }
